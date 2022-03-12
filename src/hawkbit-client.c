@@ -405,6 +405,7 @@ static gboolean rest_request(enum HTTPMethod method, const gchar *url,
         curl_easy_setopt(curl, CURLOPT_TIMEOUT, hawkbit_config->timeout);
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curl_write_cb);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, fetch_buffer);
+        curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
 
         if (jsonRequestBody) {
                 g_autoptr(JsonGenerator) generator = json_generator_new();
